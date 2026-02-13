@@ -11,9 +11,10 @@ export default function Features() {
 
                 <Title
                     title="Services"
-                    heading="Everything your brand needs to grow"
-                    description="From strategy to execution, we help businesses build strong digital products and meaningful customer experiences."
+                    heading="AI-powered ads that help your brand stand out"
+                    description="We create high-impact AI-generated ads that help small businesses build strong brand identity and promote their products with modern AI models."
                 />
+
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {featuresData.map((feature, i) => (

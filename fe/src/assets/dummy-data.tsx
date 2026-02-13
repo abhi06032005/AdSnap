@@ -3,18 +3,18 @@ import { UploadIcon, VideoIcon, ZapIcon } from 'lucide-react';
 export const featuresData = [
     {
         icon: <UploadIcon className="w-6 h-6" />,
-        title: 'Discovery & Planning',
-        desc: 'We understand your goals, audience and challenges to craft a clear, actionable strategy.'
+        title: 'Product & Brand Discovery',
+        desc: 'We understand your product, target audience, and brand goals to plan high-converting AI ad creatives.'
     },
     {
         icon: <ZapIcon className="w-6 h-6" />,
-        title: 'Design & Development',
-        desc: 'High-quality design and scalable development focused on performance and usability.'
+        title: 'AI Ad Creation',
+        desc: 'We generate stunning ads using AI models, visuals, and copy designed to grab attention and build brand trust.'
     },
     {
         icon: <VideoIcon className="w-6 h-6" />,
-        title: 'Launch & Growth',
-        desc: 'We launch, optimize and continuously improve to drive measurable business growth.'
+        title: 'Launch & Optimization',
+        desc: 'Your ads are delivered ready to launch, with continuous improvements for better reach and performance.'
     }
 ];
 
@@ -22,64 +22,63 @@ export const plansData = [
     {
         id: 'starter',
         name: 'Starter',
-        price: '$499',
-        desc: 'Best for early-stage startups.',
-        credits: 'One-time',
+        price: '₹49',
+        desc: 'Try AI video ads with a simple starter pack.',
+        credits: 'Token-based',
         features: [
-            'Project discovery & planning',
-            'UI/UX design',
-            'Basic website development',
-            '1 revision round',
-            'Email support'
+            'AI video ad generation',
+            'Limited tokens',
+            'Standard video quality',
+            'No support'
+        ]
+    },
+    {
+        id: 'basic',
+        name: 'Creator',
+        price: '₹499',
+        desc: 'Best for small businesses creating multiple AI video ads.',
+        credits: 'Token-based',
+        features: [
+            'AI video ad generation',
+            'More tokens',
+            'HD video quality',
+            'Faster generation'
         ]
     },
     {
         id: 'pro',
-        name: 'Growth',
-        price: '$1,499',
-        desc: 'Growing teams and businesses.',
-        credits: 'Monthly',
+        name: 'Pro',
+        price: '₹999',
+        desc: 'For serious creators and brands scaling with AI videos.',
+        credits: 'Token-based',
         features: [
-            'Everything in Starter',
-            'Advanced UI/UX design',
-            'Custom development',
-            'Performance optimization',
-            'Priority support'
+            'AI video ad generation',
+            'High token limit',
+            'Full HD / premium quality',
+            'Priority video processing',
+            'Email & chat support'
         ],
         popular: true
-    },
-    {
-        id: 'ultra',
-        name: 'Scale',
-        price: '$3,999',
-        desc: 'For brands ready to scale fast.',
-        credits: 'Custom',
-        features: [
-            'Everything in Growth',
-            'Dedicated project manager',
-            'Ongoing optimization',
-            'Marketing & growth support',
-            'Chat + Email support'
-        ]
     }
 ];
 
+
 export const faqData = [
     {
-        question: 'What services does your agency provide?',
-        answer: 'We offer end-to-end digital services including brand strategy, UI/UX design, web and app development and growth-focused marketing solutions.'
+        question: 'What does your AI ads platform do?',
+        answer: 'We create high-quality AI-generated ads using AI models to help small businesses brand and promote their products effectively.'
     },
     {
-        question: 'Do you work with startups or only large companies?',
-        answer: 'We work with startups, growing businesses and established brands. Our process is flexible and tailored to match your goals and scale.'
+        question: 'Who is this best suited for?',
+        answer: 'Our platform is built for small businesses, startups, and growing brands that want professional ads without high agency costs.'
     },
     {
-        question: 'How long does a typical project take?',
-        answer: 'Project timelines vary by scope, but most projects take between 2–6 weeks. We provide a clear timeline after the discovery phase.'
+        question: 'How long does it take to get my ads?',
+        answer: 'Most AI ad creatives are delivered within 24–72 hours, depending on the package and requirements.'
     },
     {
-        question: 'Do you offer ongoing support after launch?',
-        answer: 'Yes. We offer maintenance, optimization and growth support packages to ensure your product continues to perform and evolve.'
+        question: 'Can I request changes or revisions?',
+        answer: 'Yes. Each plan includes revision rounds so your ads match your brand vision perfectly.'
     }
 ];
 
@@ -89,7 +88,7 @@ export const footerLinks = [
         links: [
             { name: "Home", url: "#" },
             { name: "Services", url: "#" },
-            { name: "Work", url: "#" },
+            { name: "Pricing", url: "#" },
             { name: "Contact", url: "#" }
         ]
     },
@@ -105,7 +104,7 @@ export const footerLinks = [
         links: [
             { name: "Twitter", url: "#" },
             { name: "LinkedIn", url: "#" },
-            { name: "GitHub", url: "#" }
+            { name: "Instagram", url: "#" }
         ]
     }
 ];
