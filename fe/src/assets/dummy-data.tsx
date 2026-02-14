@@ -1,4 +1,5 @@
 import { UploadIcon, VideoIcon, ZapIcon } from 'lucide-react';
+import type { Project } from '../types';
 
 export const featuresData = [
     {
@@ -62,7 +63,6 @@ export const plansData = [
     }
 ];
 
-
 export const faqData = [
     {
         question: 'What does your AI ads platform do?',
@@ -108,3 +108,71 @@ export const footerLinks = [
         ]
     }
 ];
+
+export const dummyProjects: Project[] = [
+    {
+        id: '1',
+        name: 'Summer Collection Ad',
+        productName: 'Floral Dress',
+        productDescription: 'A beautiful floral dress perfect for summer outings.',
+        aspectRatio: '9:16',
+        userPrompt: 'Create a vibrant ad showcasing the floral dress in a sunny outdoor setting.',
+        targetLength: 15,
+        generatedImage: '/ceo.png',
+        generatedVideo: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        isGenereating: false,
+        isPublished: true,
+        createdAt: new Date(),
+        uploadedImages: []
+    },
+    {
+        id: '2',
+        name: 'Tech Gadget Promo',
+        productName: 'Smartwatch Pro',
+        productDescription: 'The latest smartwatch with advanced health tracking features.',
+        aspectRatio: '16:9',
+        userPrompt: 'Design a sleek ad highlighting the smartwatch’s features in a modern urban environment.',
+        targetLength: 30,
+        generatedImage: 'https://share.google/HwKURZXPjM95g0JCA',
+        generatedVideo: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        isGenereating: false,
+        isPublished: false,
+        createdAt: new Date(),
+        uploadedImages: []
+    },
+    {
+        id: '3',
+        productName: 'Nike Running Shoe',
+        productDescription: 'High-performance running shoe with advanced cushioning',
+        userPrompt: 'Create an engaging ad for a premium running shoe',
+        aspectRatio: '16:9',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        isPublished: true,
+        isGenereating: false,
+        generatedImage: 'https://share.google/HwKURZXPjM95g0JCA',
+        generatedVideo: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        uploadedImages: [
+            'https://via.placeholder.com/150?text=Product',
+            'https://via.placeholder.com/150?text=Model'
+        ]
+    },
+    {
+        id: '4',
+        productName: 'Apple Watch Ultra',
+        productDescription: 'Premium smartwatch with fitness tracking',
+        userPrompt: 'Create a modern tech ad for smartwatch',
+        aspectRatio: '16:9',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        isPublished: false,
+        isGenereating: true,
+        generatedImage: 'https://via.placeholder.com/800x450?text=Apple+Watch',
+        generatedVideo: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        uploadedImages: [
+            'https://via.placeholder.com/150?text=Product',
+            'https://via.placeholder.com/150?text=Model'
+        ]
+    }
+];
+
