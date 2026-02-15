@@ -1,15 +1,15 @@
 import { useEffect, useState, useMemo } from "react";
 import type { Project } from "../types";
 import { dummyProjects } from "../assets/dummy-data";
-import { ImageIcon, Loader2Icon, RefreshCwIcon, VideoIcon } from "lucide-react";
+import { ImageIcon, Loader2Icon, RefreshCwIcon, SparkleIcon, VideoIcon } from "lucide-react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { GhostButton } from "../components/Buttons";
+import { GhostButton, PrimaryButton } from "../components/Buttons";
 
 const Result = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
+  const [isGenerating, setIsGenerating] = useState(false);
   const params = useParams<{ id?: string }>();
   const location = useLocation();
   const idFromQuery = useMemo(() => new URLSearchParams(location.search).get("id"), [location.search]);
@@ -25,6 +25,10 @@ const Result = () => {
     };
     fetchProjectData();
   }, []);
+
+  const handleGenerateVideo = async()=>{
+    setIsGenerating(true);
+  }
 
   useEffect(() => {
     if (!loading && targetId) {
@@ -151,6 +155,28 @@ const Result = () => {
 
                   <div className="text-xs text-gray-400 ml-auto">Created: {new Date(proj.createdAt).toLocaleDateString()}</div>
                 </div>
+              </div>
+              <div className="glass-panel p-6 rounded-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <VideoIcon size={24}/>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Video Magic</h3>
+                <p className="text-gray-400 text-sm mb-6">Turn this image into a dynamic video for social media.</p>
+                  {!proj.generatedVideo ? (
+                    <PrimaryButton onClick={handleGenerateVideo} disabled={isGenerating} className="w-full">
+                      {isGenerating ?(
+                        <div>Generating Video ...</div>
+                      ):(
+                        <><SparkleIcon className="size-4"/>Generate Video</>
+                      )}
+                      
+                      </PrimaryButton>
+                  ):(
+                    <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400 
+                    text-center text-sm font-medium">
+                      Video Generated successfully! <br />
+                    </div>
+                  )}
               </div>
             </div>
           ))}

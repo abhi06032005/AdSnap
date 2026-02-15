@@ -23,7 +23,7 @@ function App() {
 				<Route path='/generate' element = {	<Generator /> }></Route>
 				<Route path='/result:projectId' element = {	<Result /> }></Route>
 				<Route path='/my-generations' element = {	<MyGenerations /> }></Route>
-				<Route path='/plans' element = {	<Plans/> }></Route>
+				<Route path='/plans' element = {	<Plans plans={[] as any} /> }></Route>
 				<Route path='/loading' element = {	<Loading/> }></Route>
 				<Route path='/community' element = {	<Community/> }></Route>
 			</Routes>
