@@ -1,7 +1,7 @@
 import { Webhook } from "svix";
 import type { Request, Response } from "express";
 import { prisma } from "../configs/prisma.js";
-
+import * as Sentry from "@sentry/node";
 const webhookSecret = process.env.CLERK_WEBHOOK_SECRET!;
 
 const clerkWebhooks = async (req: Request, res: Response) => {
@@ -24,7 +24,7 @@ const clerkWebhooks = async (req: Request, res: Response) => {
         await prisma.user.create({
           data: {
             id: data.id,
-            email: data.email_addresses[0].email_address,
+            email: data?.email_addresses[0]?.email_address,
             name: `${data.first_name ?? ""} ${data.last_name ?? ""}`,
             image: data.image_url,
           },
@@ -36,7 +36,7 @@ const clerkWebhooks = async (req: Request, res: Response) => {
         await prisma.user.update({
           where: { id: data.id },
           data: {
-            email: data.email_addresses[0].email_address,
+            email: data?.email_addresses[0]?.email_address,
             name: `${data.first_name ?? ""} ${data.last_name ?? ""}`,
             image: data.image_url,
           },
@@ -77,6 +77,7 @@ const clerkWebhooks = async (req: Request, res: Response) => {
 
     res.json({ message: `webhook received: ${type}` });
   } catch (err: any) {
+    Sentry.captureException(err);
     console.error("Webhook error:", err.message);
     res.status(400).json({ message: "Invalid webhook" });
   }
