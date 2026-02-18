@@ -6,6 +6,7 @@ import  type{ Request, Response } from "express";
 import clerkWebhooks from "./clerk.js";
 import * as Sentry from "@sentry/node";
 import userRouter from "../routes/userRoutes.js";
+import projectRouter from "../routes/projectRoutes.js";
 
 
 const app = express();
@@ -22,6 +23,7 @@ app.get('/',  (req : Request, res : Response)=>{
     res.send("hi there");
 })
 app.use("/api/user", userRouter);
+app.use("/api/project" , projectRouter)
 app.get("/debug-sentry", function mainHandler(req, res) {
   throw new Error("My first Sentry error!");
 });

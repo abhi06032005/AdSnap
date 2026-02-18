@@ -55,13 +55,17 @@ export const getProjectById= async(req: Request, res: Response)=>{
     try {
         const {userId } = req.auth();
         const {projectId} = req.params;
-        if(!projectId) return res.status(500).json({message : "Invalid project Id"})
-        const projects = await prisma.project.findUnique({
+        if(typeof projectId != "string" )return res.status(400).json({message: "Invalid projectId"})
+        const project = await prisma.project.findUnique({
             where:{
-                id: projectId  , userId
+                id: projectId,
+                userId : userId
             }
         })
-        res.json({projects})
+        if(!project){
+            return res.status(404).json({message : "Project not found"})
+        }
+        res.json({project})
     } catch (error : any) {
         Sentry.captureException(error);
         res.status(500).json({
@@ -74,7 +78,29 @@ export const getProjectById= async(req: Request, res: Response)=>{
 // publish / unpublish project
 export const toggleProjectPublish= async(req: Request, res: Response)=>{
     try {
-        
+         const {userId } = req.auth();
+        const {projectId} = req.params;
+        if(typeof projectId != "string" )return res.status(400).json({message: "Invalid projectId"})
+        const project = await prisma.project.findUnique({
+            where:{
+                id: projectId,
+                userId : userId
+            }
+        })
+        if(!project){
+            return res.status(404).json({message : "Project not found"})
+        }
+
+        if(!project?.generatedImage && !project?.generatedVideo){
+            return res.status(404).json({message: "Image or Video not generated"})
+        }
+
+        await prisma.project.update({
+            where:{ id:projectId, },
+            data:{isPublished : !project.isPublished}
+        })
+        res.json({isPublished : !project.isPublished})
+    
     } catch (error : any) {
         Sentry.captureException(error);
         res.status(500).json({
